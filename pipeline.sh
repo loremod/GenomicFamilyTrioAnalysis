@@ -95,6 +95,22 @@ pipeline(){
     info "Starting variant prioritization step..."
 	compute_prioritization $1 "../inher_mod"
     success "Variant prioritization step completed..."
+
+	cd ..
+}
+
+getCoverage(){
+	info "---COMPUTING COVERAGE---"
+	trios=$(cat my_trios)
+	for id in $trios
+	do
+		info "Starting case ${id}..."
+		bedtools genomecov -ibam case${id}/case${id}_father.bam -bg -trackline -trackopts 'name="father${id}"' -max 100 > coverage/fatherCov${id}.bg
+		bedtools genomecov -ibam case${id}/case${id}_mother.bam -bg -trackline -trackopts 'name="mother${id}"' -max 100 > coverage/motherCov${id}.bg
+		bedtools genomecov -ibam case${id}/case${id}_child.bam -bg -trackline -trackopts 'name="child${id}"' -max 100 > coverage/childCov${id}.bg
+		success "Case ${id} done"
+	done
+	success "---COVERAGE COMPUTED---"
 }
 
 ###TESTING FUNCTIONS###
@@ -115,6 +131,8 @@ for ID in "$@"; do
     pipeline $ID
     success "---$ID PIPELINE COMPLETED---"
 done
+getCoverage #get coverage from every bam file
+
 
 ###GIVE EXECUTION PERMISSION###
 #chmod +x ./pipeline.sh
