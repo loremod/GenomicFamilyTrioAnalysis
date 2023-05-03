@@ -4,18 +4,16 @@ source colors
 ###FUNCTIONS###
 AD_prioritization(){
 	grep -v "#" results$1.vcf | awk -F "\t" -f ../AD.awk >> called_var$1.vcf
-	# cp called_var$1.vcf out_filtered
 }
 
 AR_prioritization(){
 	grep -v "#" results$1.vcf | awk -F "\t" -f ../AR.awk >> called_var$1.vcf
-	# cp called_var$1.vcf out_filtered
 }
 
 compute_prioritization(){
 	local inher_path=$2
 	local im=`grep $1 $inher_path | cut -f 2`
-    grep "#" results$1.vcf > called_var$1.vcf
+	grep "#" results$1.vcf > called_var$1.vcf
 	if [ "$im" = "AR" ]
 	then
 		info "->Sample $1 is AR"
@@ -30,10 +28,9 @@ compute_prioritization(){
 		warning "Parameter for genetic model not recognized"
         return 
 	fi
-    grep "#" called_var$1.vcf > ${1}called_varTG.vcf
-    bedtools intersect -a called_var$1.vcf -b /home/BCG2023_genomics_exam/exons16Padded_sorted.bed -u >> ${1}called_varTG.vcf
-    success "->called_var$1.vcf created [FINAL VCF FILE]"
-    # head ${1}called_varTG.vcf
+	grep "#" called_var$1.vcf > ${1}called_varTG.vcf
+	bedtools intersect -a called_var$1.vcf -b /home/BCG2023_genomics_exam/exons16Padded_sorted.bed -u >> ${1}called_varTG.vcf
+	success "->called_var$1.vcf created [FINAL VCF FILE]"
 }
 
 fastqcStep(){
@@ -50,7 +47,7 @@ alignmentStep(){
 		name=${filename%.*}
 		bowtie2 -U $filename -x uni --rg-id $name --rg "SM:$name" | samtools view -Sb | samtools sort -o ${filename%.*}.bam
 	done
-    for filename in *.bam
+	for filename in *.bam
 	do
 		samtools index $filename
 	done
@@ -68,33 +65,33 @@ pipeline(){
 	cd case$1
 	cp ../../../BCG2023_genomics_exam/case$1* .
 	cp ../../../BCG2023_genomics_exam/universe.fasta . 
-    cp ../uni.* . 
+    	cp ../uni.* . 
 
 	gunzip *gz
 
-    info "Starting FastQC step..."
-    fastqcStep
-    success "FastQC step completed..."
+	info "Starting FastQC step..."
+	fastqcStep
+	success "FastQC step completed..."
 
-    info "Starting alignment step..."
+	info "Starting alignment step..."
 	alignmentStep
-    success "Alignment step completed..."
+	success "Alignment step completed..."
 
-    info "Starting qualimap step..."
-    qualimapStep
-    success "Qualimap step completed..."
+	info "Starting qualimap step..."
+	qualimapStep
+	success "Qualimap step completed..."
 
-    info "Starting multiqc step..."
+	info "Starting multiqc step..."
 	multiqc ./
-    success "Multiqc step completed..."
+	success "Multiqc step completed..."
 
-    info "Starting freebayes step..."
+	info "Starting freebayes step..."
 	freebayes -f universe.fasta -m 20 -C 5 -Q 10 --min-coverage 10 case$1_child.bam case$1_mother.bam case$1_father.bam > results$1.vcf
-    success "Freebayes step completed..."
+	success "Freebayes step completed..."
 
-    info "Starting variant prioritization step..."
+	info "Starting variant prioritization step..."
 	compute_prioritization $1 "../inher_mod"
-    success "Variant prioritization step completed..."
+	success "Variant prioritization step completed..."
 
 	cd ..
 }
