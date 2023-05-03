@@ -3,12 +3,12 @@ source colors
 
 ###FUNCTIONS###
 AD_prioritization(){
-	grep -P '\t0\/0.*?\t0\/0.*?\t0\/1.*' results$1.vcf >> called_var$1.vcf
+	grep -v "#" results$1.vcf | awk -F "\t" -f ../AD.awk >> called_var$1.vcf
 	# cp called_var$1.vcf out_filtered
 }
 
 AR_prioritization(){
-	grep -P "\t(0\/[12]).*?\t(0\/[12]).*?\t(1\/1|2\/2).*" results$1.vcf >> called_var$1.vcf
+	grep -v "#" results$1.vcf | awk -F "\t" -f ../AR.awk >> called_var$1.vcf
 	# cp called_var$1.vcf out_filtered
 }
 
