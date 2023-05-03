@@ -1,0 +1,24 @@
+Black='\033[0;30m' 
+Blue='\033[0;34m'  
+Cyan='\033[0;36m'  
+Green='\033[0;32m' 
+Purple='\033[0;35m'
+Red='\033[0;31m'   
+White='\033[0;37m' 
+Yellow='\033[0;33m'
+
+write () {
+   echo -e $2$1$White
+}
+
+warning () {
+   echo -e $Yellow$1$White
+}
+
+info () {
+   echo -e $Cyan$1$White
+}
+
+success (){
+   echo -e $Green$1$White
+}
