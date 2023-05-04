@@ -32,7 +32,7 @@ compute_prioritization(){
 	fi
     grep "#" called_var$1.vcf > ${1}called_varTG.vcf
     bedtools intersect -a called_var$1.vcf -b /home/BCG2023_genomics_exam/exons16Padded_sorted.bed -u >> ${1}called_varTG.vcf
-    success "->called_var$1.vcf created [FINAL VCF FILE]"
+    success "->${1}called_varTG.vcf created [FINAL VCF FILE]"
     # head ${1}called_varTG.vcf
 }
 
