@@ -101,6 +101,7 @@ pipeline(){
 
 getCoverage(){
 	info "---COMPUTING COVERAGE---"
+	mkdir coverage
 	trios=$(cat my_trios)
 	for id in $trios
 	do
