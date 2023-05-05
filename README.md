@@ -22,13 +22,15 @@ This code is for Unix Operating Systems
 
 # 📈 Shell Screenshots of the pipeline
 <p align="center">
-  <img width="682" height="512" src="./output/images/1.PNG"/>
+  <img width="600" height="450" src="./output/images/1.PNG"/>
 </p>
 <p align="center">
-  <img width="682" height="512" src="./output/images/2.PNG"/>
+  <img width="600" height="450" src="./output/images/2.PNG"/>
 </p>
+# 📈 Shell Screenshot of show_order_columns.sh
+`show_order_columns.sh` shows the position of each family member sample in the VCF file for every cases evaluated. It is useful to check if they are in the expected order.
 <p align="center">
-  <img width="682" height="512" src="./output/images/show_order_columns.PNG"/>
+  <img width="600" height="450" src="./output/images/show_order_columns.PNG"/>
 </p>
 
 # 👨‍💻Authors
