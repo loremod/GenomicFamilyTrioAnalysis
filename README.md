@@ -27,8 +27,9 @@ This code is for Unix Operating Systems
 <p align="center">
   <img width="600" height="450" src="./output/images/2.PNG"/>
 </p>
+
 # 📈 Shell Screenshot of show_order_columns.sh
-`show_order_columns.sh` shows the position of each family member sample in the VCF file for every cases evaluated. It is useful to check if they are in the expected order.
+The file `show_order_columns.sh` shows the position of each family member sample in the VCF file for every cases evaluated. It is useful to check if they are in the expected order.
 <p align="center">
   <img width="600" height="450" src="./output/images/show_order_columns.PNG"/>
 </p>
