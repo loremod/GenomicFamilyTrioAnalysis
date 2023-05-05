@@ -11,12 +11,12 @@ git clone https://github.com/loremod/GenomicFamilyTrioAnalysis.git
 ```
 ### GIVE EXECUTION PERMISSION
 ```
-#chmod +x ./pipeline.sh
+chmod +x ./pipeline.sh
 ```
 
 ### COMMAND TO EXECUTE
 ```
-#./pipeline.sh $(cat my_trios)
+./pipeline.sh $(cat my_trios)
 ```
 This code is for Unix Operating Systems
 
