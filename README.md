@@ -18,7 +18,6 @@ chmod +x ./pipeline.sh
 ```
 ./pipeline.sh $(cat my_trios)
 ```
-This code is for Unix Operating Systems
 
 # 📈 Shell screenshots of the pipeline
 <p align="center">
@@ -37,3 +36,5 @@ The file `show_order_columns.sh` shows the position of each family member sample
 # 👨‍💻Authors
 * [Annalisa Imperiali](https://github.com/annalisai)
 * [Lorenzo Modica](https://github.com/loremod)
+
+$${\color{red}This \space code \space is \space for \space Unix \space Operating \space Systems}$$
