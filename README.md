@@ -20,6 +20,17 @@ git clone https://github.com/loremod/GenomicFamilyTrioAnalysis.git
 ```
 This code is for Unix Operating Systems
 
+# 📈 Shell Screenshots of the pipeline
+<p align="center">
+  <img width="682" height="512" src="./output/images/1.PNG"/>
+</p>
+<p align="center">
+  <img width="682" height="512" src="./output/images/2.PNG"/>
+</p>
+<p align="center">
+  <img width="682" height="512" src="./output/images/show_order_columns.PNG"/>
+</p>
+
 # 👨‍💻Authors
 * [Annalisa Imperiali](https://github.com/annalisai)
 * [Lorenzo Modica](https://github.com/loremod)
